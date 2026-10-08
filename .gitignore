@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__/
+.venv/
+tools/node_modules/
+tools/fonts/
+_site/

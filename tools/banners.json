@@ -1,0 +1,38 @@
+[
+ {
+  "id": "flow-android",
+  "title": "Flow",
+  "tagline": ["Privacy-first YouTube and YouTube Music", "for Android, with recommendations that stay on your phone."],
+  "chips": ["Open source", "No ads", "No tracking", "No account"],
+  "features": [
+   {"icon": "ms:play_arrow",  "shape": "cookie9",  "role": "primary",   "r": 112, "dx": 0,    "dy": 18,   "spin": 50},
+   {"icon": "ms:music_note",  "shape": "clover4",  "role": "tertiary",  "r": 66,  "dx": 150,  "dy": -100, "spin": 36},
+   {"icon": "ms:neurology",   "shape": "sunny",    "role": "neutral",   "r": 58,  "dx": 158,  "dy": 118,  "spin": 44},
+   {"icon": "ms:shield",      "shape": "flower",   "role": "secondary", "r": 48,  "dx": -150, "dy": -112, "spin": 30}
+  ]
+ },
+ {
+  "id": "flow-desktop",
+  "title": "Flow Desktop",
+  "tagline": ["Privacy-first YouTube and YouTube Music", "for Windows, macOS and Linux."],
+  "chips": ["Open source", "Rust · Tauri 2", "No tracking"],
+  "features": [
+   {"icon": "ms:desktop_windows", "shape": "cookie9", "role": "primary",   "r": 112, "dx": 0,    "dy": 18,   "spin": 50},
+   {"icon": "ms:music_note",      "shape": "clover4", "role": "tertiary",  "r": 66,  "dx": 150,  "dy": -100, "spin": 36},
+   {"icon": "ms:play_arrow",      "shape": "sunny",   "role": "neutral",   "r": 58,  "dx": 158,  "dy": 118,  "spin": 44},
+   {"icon": "ms:shield",          "shape": "flower",  "role": "secondary", "r": 48,  "dx": -150, "dy": -112, "spin": 30}
+  ]
+ },
+ {
+  "id": "flow-tube",
+  "title": "Flow-Tube",
+  "tagline": ["Open-source, privacy-first YouTube and", "YouTube Music clients for every screen."],
+  "chips": ["Android", "Desktop", "FlowNeuro", "GPL-3.0"],
+  "features": [
+   {"icon": "si:android",         "shape": "cookie9", "role": "primary",   "r": 112, "dx": 0,    "dy": 18,   "spin": 50},
+   {"icon": "ms:desktop_windows", "shape": "clover4", "role": "tertiary",  "r": 66,  "dx": 150,  "dy": -100, "spin": 36},
+   {"icon": "ms:neurology",       "shape": "sunny",   "role": "neutral",   "r": 58,  "dx": 158,  "dy": 118,  "spin": 44},
+   {"icon": "ms:favorite",        "shape": "flower",  "role": "secondary", "r": 48,  "dx": -150, "dy": -112, "spin": 30}
+  ]
+ }
+]

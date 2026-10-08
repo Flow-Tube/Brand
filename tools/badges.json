@@ -1,0 +1,248 @@
+{
+ "pill": [
+  {
+   "id": "get-github",
+   "icon": "si:github",
+   "overline": "Get it on",
+   "label": "GitHub",
+   "category": "download",
+   "animated": true,
+   "href": "https://github.com/A-EDev/Flow/releases/latest"
+  },
+  {
+   "id": "get-izzyondroid",
+   "icon": "si:android",
+   "overline": "Get it on",
+   "label": "IzzyOnDroid",
+   "category": "download",
+   "animated": true,
+   "href": "https://apt.izzysoft.de/packages/io.github.aedev.flow"
+  },
+  {
+   "id": "get-obtainium",
+   "icon": "si:obtainium",
+   "overline": "Get it on",
+   "label": "Obtainium",
+   "category": "download",
+   "animated": true,
+   "href": "https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/A-EDev/Flow/"
+  },
+  {
+   "id": "get-nightly",
+   "icon": "ms:bedtime",
+   "overline": "Try the",
+   "label": "Nightly build",
+   "category": "nightly",
+   "animated": true,
+   "href": "https://nightly.link/A-EDev/Flow/workflows/build/main/flow-nightly-apk.zip"
+  },
+  {
+   "id": "get-windows",
+   "icon": "ms:desktop_windows",
+   "overline": "Download for",
+   "label": "Windows",
+   "category": "download",
+   "animated": true,
+   "href": "https://github.com/Flow-Tube/Flow-Desktop/releases/latest"
+  },
+  {
+   "id": "get-macos",
+   "icon": "si:apple",
+   "overline": "Download for",
+   "label": "macOS",
+   "category": "download",
+   "animated": true,
+   "href": "https://github.com/Flow-Tube/Flow-Desktop/releases/latest"
+  },
+  {
+   "id": "get-linux",
+   "icon": "si:linux",
+   "overline": "Download for",
+   "label": "Linux",
+   "category": "download",
+   "animated": true,
+   "href": "https://github.com/Flow-Tube/Flow-Desktop/releases/latest"
+  },
+  {
+   "id": "join-reddit",
+   "icon": "si:reddit",
+   "overline": "Join us on",
+   "label": "r/Flow_Official",
+   "category": "community",
+   "href": "https://www.reddit.com/r/Flow_Official/"
+  },
+  {
+   "id": "translate",
+   "icon": "si:weblate",
+   "overline": "Help translate",
+   "label": "on Weblate",
+   "category": "community",
+   "href": "https://hosted.weblate.org/engage/flow/"
+  },
+  {
+   "id": "support-patreon",
+   "icon": "ms:favorite",
+   "overline": "Support Flow on",
+   "label": "Patreon",
+   "category": "support",
+   "animated": true,
+   "emphasis": "filled",
+   "href": "https://patreon.com/A_EDev"
+  },
+  {
+   "id": "part-of-flow",
+   "icon": "flow",
+   "overline": "Part of the",
+   "label": "Flow ecosystem",
+   "category": "brand",
+   "href": "https://github.com/Flow-Tube"
+  }
+ ],
+ "split": [
+  {
+   "id": "android",
+   "icon": "si:android",
+   "key": "Android",
+   "value": "8.0+"
+  },
+  {
+   "id": "desktop",
+   "icon": "ms:desktop_windows",
+   "key": "Desktop",
+   "value": "Windows · macOS · Linux"
+  },
+  {
+   "id": "release",
+   "icon": "ms:rocket_launch",
+   "key": "Release",
+   "value": "v2.2.1",
+   "href": "https://github.com/A-EDev/Flow/releases/latest"
+  },
+  {
+   "id": "downloads",
+   "icon": "ms:download",
+   "key": "Downloads",
+   "value": "134k+",
+   "href": "https://github.com/A-EDev/Flow/releases"
+  },
+  {
+   "id": "desktop-release",
+   "icon": "ms:rocket_launch",
+   "key": "Release",
+   "value": "v0.1.0-beta2",
+   "href": "https://github.com/Flow-Tube/Flow-Desktop/releases/latest"
+  },
+  {
+   "id": "desktop-downloads",
+   "icon": "ms:download",
+   "key": "Downloads",
+   "value": "11k+",
+   "href": "https://github.com/Flow-Tube/Flow-Desktop/releases"
+  },
+  {
+   "id": "license",
+   "icon": "ms:balance",
+   "key": "License",
+   "value": "GPL-3.0",
+   "href": "LICENSE"
+  },
+  {
+   "id": "flowneuro",
+   "icon": "ms:neurology",
+   "key": "FlowNeuro",
+   "value": "On-device"
+  },
+  {
+   "id": "tracking",
+   "icon": "ms:shield",
+   "key": "Tracking",
+   "value": "None"
+  },
+  {
+   "id": "signed",
+   "icon": "ms:verified_user",
+   "key": "Signed",
+   "value": "SHA-256",
+   "href": "#verifying-authenticity"
+  },
+  {
+   "id": "kotlin",
+   "icon": "ms:code",
+   "key": "Built with",
+   "value": "Kotlin · Compose"
+  },
+  {
+   "id": "tauri",
+   "icon": "ms:code",
+   "key": "Built with",
+   "value": "Rust · Tauri 2"
+  },
+  {
+   "id": "reddit",
+   "icon": "si:reddit",
+   "key": "Reddit",
+   "value": "r/Flow_Official",
+   "href": "https://www.reddit.com/r/Flow_Official/"
+  }
+ ],
+ "tile": [
+  {
+   "id": "tile-android",
+   "icon": "si:android",
+   "label": "Flow",
+   "sub": "for Android",
+   "category": "project",
+   "animated": true,
+   "href": "https://github.com/A-EDev/Flow"
+  },
+  {
+   "id": "tile-desktop",
+   "icon": "ms:desktop_windows",
+   "label": "Flow Desktop",
+   "sub": "Win · macOS · Linux",
+   "category": "project",
+   "animated": true,
+   "href": "https://github.com/Flow-Tube/Flow-Desktop"
+  },
+  {
+   "id": "tile-website",
+   "icon": "ms:language",
+   "label": "Website",
+   "sub": "Docs and downloads",
+   "category": "project",
+   "animated": true,
+   "href": "https://flow-tube.org"
+  },
+  {
+   "id": "tile-flowneuro",
+   "icon": "ms:neurology",
+   "label": "FlowNeuro",
+   "sub": "On-device recs",
+   "category": "info"
+  },
+  {
+   "id": "tile-translate",
+   "icon": "ms:translate",
+   "label": "Translate",
+   "sub": "on Weblate",
+   "category": "community",
+   "href": "https://hosted.weblate.org/engage/flow/"
+  },
+  {
+   "id": "tile-flow",
+   "icon": "flow",
+   "label": "Flow-Tube",
+   "sub": "The Flow ecosystem",
+   "category": "brand",
+   "href": "https://github.com/Flow-Tube"
+  },
+  {
+   "id": "tile-support",
+   "icon": "ms:favorite",
+   "label": "Support",
+   "sub": "Patreon · crypto",
+   "category": "support",
+   "href": "https://patreon.com/A_EDev"
+  }
+ ]
+}
