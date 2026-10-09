@@ -1,0 +1,35 @@
+{
+ "charts": [
+  {
+   "id": "stars-flow-android",
+   "href": "https://github.com/A-EDev/Flow/stargazers",
+   "title": "Star history",
+   "subtitle": "A-EDev/Flow · Flow for Android",
+   "unit": "stars on GitHub",
+   "repos": [
+    {"repo": "A-EDev/Flow", "label": "Flow", "color": 0, "sample_start": "2025-10-19", "sample_total": 2454}
+   ]
+  },
+  {
+   "id": "stars-flow-desktop",
+   "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
+   "title": "Star history",
+   "subtitle": "Flow-Tube/Flow-Desktop · Flow Desktop",
+   "unit": "stars on GitHub",
+   "repos": [
+    {"repo": "Flow-Tube/Flow-Desktop", "label": "Flow Desktop", "color": 1, "sample_start": "2026-05-20", "sample_total": 95}
+   ]
+  },
+  {
+   "id": "stars-flow-tube",
+   "href": "https://github.com/Flow-Tube",
+   "title": "Star history",
+   "subtitle": "Every Flow-Tube project",
+   "unit": "stars across Flow-Tube",
+   "repos": [
+    {"repo": "A-EDev/Flow", "label": "Flow", "color": 0, "sample_start": "2025-10-19", "sample_total": 2454},
+    {"repo": "Flow-Tube/Flow-Desktop", "label": "Flow Desktop", "color": 1, "sample_start": "2026-05-20", "sample_total": 95}
+   ]
+  }
+ ]
+}

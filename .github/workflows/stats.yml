@@ -1,6 +1,7 @@
 name: stats
 
-# Refreshes the release and download chips (Android and Desktop) from the GitHub releases API.
+# Refreshes the release and download chips (Android and Desktop) from the GitHub releases API,
+# and the star history charts in v1/stars/ from the stargazers API.
 on:
   schedule:
     - cron: "17 3 * * *"
@@ -44,21 +45,29 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: python tools/update_stats.py
 
+      - name: Update star history charts
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python tools/flowstars.py
+          python tools/make_manifest.py
+
       - name: Check assets
         run: python tools/check_assets.py --base HEAD
 
-      - name: Commit if the chips changed
+      - name: Commit if anything changed
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # in a git pathspec, * also matches /, so this covers every SVG under v1/
-          if git diff --quiet -- 'v1/*.svg'; then
-            echo "Numbers unchanged"
+          # porcelain also lists untracked files, so the first run's new charts and caches count
+          if [ -z "$(git status --porcelain -- v1 tools/data)" ]; then
+            echo "Chips and star history unchanged"
             exit 0
           fi
-          git add v1 tools/badges.json
+          git status --short -- v1 tools/data
+          git add v1 tools/badges.json tools/data
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore(stats): update release and download chips"
+          git commit -m "chore(stats): update chips and star history"
           git push origin HEAD:main
           gh workflow run pages.yml --ref main

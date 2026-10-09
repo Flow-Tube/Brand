@@ -13,13 +13,17 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 V1 = os.path.normpath(os.path.join(HERE, "..", "v1"))
 MANIFEST = os.path.join(V1, "manifest.json")
 BASE_URL = "https://assets.flow-tube.org/v1/"
-KINDS = {"badges/pill": "pill", "badges/split": "split", "badges/tile": "tile", "banners": "banner", "icons": "icon"}
+KINDS = {"badges/pill": "pill", "badges/split": "split", "badges/tile": "tile", "banners": "banner", "icons": "icon",
+         "stars": "stars"}
 NAME = re.compile(r"^(?P<id>.+?)(?:-(?P<theme>light|dark))?(?P<animated>-animated)?(?:-(?P<px>\d+))?\.(?P<ext>svg|png)$")
 SVG_NS = "{http://www.w3.org/2000/svg}"
 
 def hrefs():
     cfg = json.load(open(os.path.join(HERE, "badges.json")))
-    return {b["id"]: b["href"] for items in cfg.values() for b in items if b.get("href")}
+    links = {b["id"]: b["href"] for items in cfg.values() for b in items if b.get("href")}
+    stars = json.load(open(os.path.join(HERE, "stars.json")))
+    links.update({c["id"]: c["href"] for c in stars["charts"] if c.get("href")})
+    return links
 
 def svg_info(path):
     root = ET.parse(path).getroot()

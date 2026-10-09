@@ -187,8 +187,13 @@ const KINDS = {
            text: "README headers for each repo. The shapes on the right carry the features. The 1280 × 640 PNGs are for GitHub's social preview: upload them under Settings → General → Social preview."},
   icon:   {eyebrow: "Format 5 · Adaptive icon", title: "App icon previews",
            text: "Previews of the Expressive launcher icons, each with a Nightly version. The SVG is the full 108dp canvas; the 512px PNG is masked to a squircle, as a launcher shows it."},
+  stars:  {eyebrow: "Format 6 · 960 × 460", title: "Star history", animate: true,
+           text: "Star history for each project and one for the whole org, rebuilt daily from the GitHub stargazers API. Each project keeps its colour in every chart: Flow red for Android, blue for Desktop. The animated files draw the line in once."},
 };
-const BANNER_NAMES = {"flow-android": "Flow for Android", "flow-desktop": "Flow Desktop", "flow-tube": "Flow-Tube org"};
+const NAMES = {
+  banner: {"flow-android": "Flow for Android", "flow-desktop": "Flow Desktop", "flow-tube": "Flow-Tube org"},
+  stars: {"stars-flow-android": "Flow for Android", "stars-flow-desktop": "Flow Desktop", "stars-flow-tube": "Flow-Tube org"},
+};
 
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
 const kb = n => n < 1024 ? n + " B" : (n / 1024).toFixed(1) + " KB";
@@ -270,8 +275,9 @@ function badgeRows(kind, items) {
   return s;
 }
 
-function banners(items) {
-  const {s, anim} = section("banner", items.length);
+// banners and star charts: one tab per design, the selected one on both GitHub backgrounds
+function tabbed(kind, items) {
+  const {s, anim} = section(kind, items.length);
   const tabs = el("div", "tabs");
   tabs.setAttribute("role", "tablist");
   const panels = el("div", "banner-panels");
@@ -281,7 +287,7 @@ function banners(items) {
   const draw = () => {
     tabs.innerHTML = ""; panels.innerHTML = ""; bar.innerHTML = "";
     for (const g of items) {
-      const t = el("button", null, esc(BANNER_NAMES[g.id] || g.id));
+      const t = el("button", null, esc(NAMES[kind][g.id] || g.id));
       t.type = "button"; t.setAttribute("role", "tab"); t.setAttribute("aria-selected", String(g.id === sel));
       t.onclick = () => { sel = g.id; draw(); };
       tabs.appendChild(t);
@@ -291,12 +297,14 @@ function banners(items) {
     for (const [t, name] of [["light", "l"], ["dark", "d"]]) {
       const png = g.files["social-png"]?.[t];
       const p = el("div", "panel " + name, `<span class="tag">github.com · ${t}</span>
-        <img class="banner" src="v1/${v[t].path}" width="${g.width}" height="${g.height}" alt="${esc(g.alt)}">`);
+        <img class="banner" src="v1/${v[t].path}" width="${g.width}" height="${g.height}" alt="${esc(g.alt)}" loading="lazy">`);
       if (png) p.appendChild(el("div", "social", `<img src="v1/${png.path}" width="${png.width}" height="${png.height}" alt="Social preview, ${t}" loading="lazy">
         <span>Social preview · <a href="v1/${png.path}" download>${png.path.split("/").pop()}</a> · ${kb(png.bytes)}</span>`));
       panels.appendChild(p);
     }
-    bar.appendChild(copyButton("Copy banner snippet", picture(v.light.path, v.dark.path, g.alt, `width="100%"`), g.id + " banner"));
+    const alt = kind === "stars" ? `Star history of ${NAMES.stars[g.id] || g.id}` : g.alt;
+    const what = kind === "stars" ? "chart" : "banner";
+    bar.appendChild(copyButton(`Copy ${what} snippet`, picture(v.light.path, v.dark.path, alt, `width="100%"`, g.href), `${g.id} ${what}`));
   };
   anim.onchange = draw;
   draw();
@@ -338,7 +346,8 @@ async function main() {
     picture(first.files.static.light.path, first.files.static.dark.path, first.alt, `height="60"`, first.href);
   const box = document.getElementById("kinds");
   for (const kind of ["pill", "split", "tile"]) if (g[kind]) box.appendChild(badgeRows(kind, Object.values(g[kind])));
-  if (g.banner) box.appendChild(banners(Object.values(g.banner)));
+  if (g.banner) box.appendChild(tabbed("banner", Object.values(g.banner)));
+  if (g.stars) box.appendChild(tabbed("stars", Object.values(g.stars)));
   if (g.icon) box.appendChild(icons(Object.values(g.icon)));
 }
 

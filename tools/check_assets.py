@@ -9,7 +9,8 @@ Checks
   * URL contract: every path under v1/ in --base still exists (files are never removed or renamed)
   * every SVG is well-formed, has role="img" and a <title>, and loads nothing external
   * every -light file has a -dark twin and vice versa
-  * size limits: badges and icons 40 KB, banners 80 KB
+  * size limits: badges and icons 40 KB, banners 80 KB, star charts 120 KB
+  * no preview chart (marked "Sample data") is ever published under v1/stars/
   * v1/manifest.json matches the files on disk
 """
 import argparse, os, re, subprocess, sys
@@ -18,7 +19,7 @@ from make_manifest import V1, MANIFEST, render
 
 REPO = os.path.dirname(V1)
 SVG_NS = "{http://www.w3.org/2000/svg}"
-LIMITS = {"badges/": 40 * 1024, "icons/": 40 * 1024, "banners/": 80 * 1024}
+LIMITS = {"badges/": 40 * 1024, "icons/": 40 * 1024, "banners/": 80 * 1024, "stars/": 120 * 1024}
 EXTERNAL = [
     re.compile(r"""(?:xlink:)?href\s*=\s*["']\s*(?:https?:)?//""", re.I),
     re.compile(r"""url\(\s*["']?\s*(?:https?:)?//""", re.I),
@@ -74,7 +75,10 @@ def main():
         path = os.path.join(REPO, rel)
         sub = rel[len("v1/"):]
         if rel.endswith(".svg"):
-            errs += check_svg(rel, open(path, encoding="utf-8").read())
+            text = open(path, encoding="utf-8").read()
+            errs += check_svg(rel, text)
+            if sub.startswith("stars/") and "sample data" in text.lower():
+                errs.append(f"{rel}: is a sample preview (\"Sample data\"), not a real chart")
         if m := PAIR.match(os.path.basename(rel)):
             twin = f"{m[1]}-{'dark' if m[2] == 'light' else 'light'}{m[3]}"
             if f"{os.path.dirname(rel)}/{twin}" not in now:
