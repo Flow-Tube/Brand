@@ -48,9 +48,13 @@ jobs:
       - name: Update star history charts
         env:
           # The built-in token can't list another repo's stargazers ("Resource not accessible by
-          # integration"), so this uses a fine-grained token with read-only access to public repos.
-          GITHUB_TOKEN: ${{ secrets.STARS_TOKEN || github.token }}
+          # integration"), so this needs a fine-grained token with read-only access to public repos.
+          GITHUB_TOKEN: ${{ secrets.STARS_TOKEN }}
         run: |
+          if [ -z "$GITHUB_TOKEN" ]; then
+            echo "::warning::STARS_TOKEN secret is not set; skipping the star history charts"
+            exit 0
+          fi
           python tools/flowstars.py
           python tools/make_manifest.py
 
