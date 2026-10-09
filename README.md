@@ -26,6 +26,7 @@ Badges, banners and icon previews for the [Flow](https://github.com/Flow-Tube) p
 | [`v1/badges/tile/`](v1/badges/tile) | Project tiles for the org profile and website | 152 × 152 |
 | [`v1/banners/`](v1/banners) | README banners, plus social previews (`-social-*.png`) | 1280 × 420, 1280 × 640 |
 | [`v1/icons/`](v1/icons) | Launcher icon previews, SVG and 512px PNG | 108dp canvas |
+| [`v1/stars/`](v1/stars) | Star history charts, updated daily | 960 × 460 |
 | [`v1/manifest.json`](v1/manifest.json) | Index of every file: kind, id, theme, size, alt text, link | |
 
 Every badge and banner comes as `<id>-light.svg` and `<id>-dark.svg`, and some also as `<id>-light-animated.svg` / `<id>-dark-animated.svg`.
@@ -80,6 +81,17 @@ Use `<picture>` with `prefers-color-scheme`, so readers with a dark theme get th
   <source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/banners/flow-android-dark.svg">
   <img alt="Flow. Privacy-first YouTube and YouTube Music for Android." src="https://assets.flow-tube.org/v1/banners/flow-android-light.svg" width="100%">
 </picture>
+```
+
+**Star history chart** (full width, links to the stargazers):
+
+```html
+<a href="https://github.com/A-EDev/Flow/stargazers">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/stars/stars-flow-android-dark.svg">
+    <img alt="Star history of Flow for Android" src="https://assets.flow-tube.org/v1/stars/stars-flow-android-light.svg" width="100%">
+  </picture>
+</a>
 ```
 
 **Icon preview** (no light/dark versions):
@@ -160,6 +172,17 @@ The `release` and `downloads` chips (Flow for Android) and `desktop-release` and
 - release = the newest stable tag, ignoring prereleases and drafts
 - downloads = every asset of every release, rounded down so it never overstates: `950`, `9.1k+`, `48k+`, `1.2M+`
 - the values are saved to `tools/badges.json` and only those chips are re-rendered; it commits only when an SVG changed
+
+### Star history
+
+The same `stats` run rebuilds the charts in `v1/stars/` with [`tools/flowstars.py`](tools/flowstars.py):
+
+- Data comes from GitHub's `/repos/{owner}/{repo}/stargazers/history` endpoint: stars per day, no usernames, a page or two per repo. The built-in Actions token is enough.
+- `tools/data/stars-state.json` keeps the last rendered totals. A chart whose totals haven't changed is skipped, so the "Updated" date doesn't create a commit every day. Run with `--force` to re-render anyway.
+- To add a chart, add an entry to `charts` in [`tools/stars.json`](tools/stars.json) with an `id` (the file name), `href`, `title`, `subtitle`, `unit` and one or more `repos`. To add a repo to a chart, add `{"repo": "owner/name", "label": "...", "color": n}` to its `repos`.
+- `color` picks the series colour: `0` is Flow red and `1` is Desktop blue. Give a project the same `color` in every chart, so it reads the same everywhere.
+- Charts with one repo get milestone markers and a filled area; charts with several get a legend and labels at the line ends.
+- Preview without touching the API: `python3 tools/flowstars.py --sample --out /tmp/stars`. Sample charts say "Sample data" and `check_assets.py` refuses them in `v1/`.
 
 ### Refresh right after a Flow release (optional)
 
