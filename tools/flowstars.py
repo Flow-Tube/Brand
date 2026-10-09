@@ -9,7 +9,7 @@ Usage
   GITHUB_TOKEN=... python3 flowstars.py            # real data, writes v1/stars/*.svg (out/stars outside the brand repo)
   python3 flowstars.py --sample                     # preview with a synthetic curve (marked "Sample data")
 """
-import os, sys, json, math, argparse, datetime as dt, urllib.request, random
+import os, sys, json, math, argparse, datetime as dt, urllib.request, urllib.error, random
 from flowbadges import text_outline, text_width, icon_svg, shape_path, PALETTE, HERE
 
 CFG = json.load(open(os.path.join(HERE, "stars.json")))
@@ -27,7 +27,10 @@ SERIES = {"light": ["#BC0100", "#0059BA"], "dark": ["#F2402C", "#488FFF"]}
 def _get(url, token, accept="application/vnd.github+json"):
     req = urllib.request.Request(url, headers={"Accept": accept, "Authorization": f"Bearer {token}",
                                                "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "flow-brand"})
-    return json.load(urllib.request.urlopen(req, timeout=30))
+    try:
+        return json.load(urllib.request.urlopen(req, timeout=30))
+    except urllib.error.HTTPError as e:
+        sys.exit(f"GET {url} -> {e.code}: {e.read().decode(errors='replace')[:300]}")
 
 def _pages(repo, token, page, stamps):
     while True:
