@@ -2,7 +2,10 @@
 """Flow star history chart, in the same M3 Expressive system as the badges and banners.
 
 Data: GitHub REST stargazers endpoint with the `star+json` media type, which includes `starred_at`.
-Needs a token in GITHUB_TOKEN (in Actions the built-in token works for public repos).
+Since July 2026 GitHub only lists stargazers to a repo's admins and collaborators, so each repo needs a token
+that acts as one. STARS_TOKEN_<OWNER> (owner upper-cased, "-" -> "_", e.g. STARS_TOKEN_FLOW_TUBE) is used for
+that owner's repos, else GITHUB_TOKEN / GH_TOKEN (handy locally: GITHUB_TOKEN=$(gh auth token)).
+The built-in Actions token can't do this.
 Fetched timestamps are cached in data/stars-<owner>-<repo>.json and only new pages are fetched next time.
 
 Usage
@@ -44,6 +47,11 @@ def _pages(repo, token, page, stamps):
         page += 1
 
 _fetched = {}
+
+def token_for(repo):
+    owner = repo.split("/")[0].upper().replace("-", "_")
+    return (os.environ.get("STARS_TOKEN_" + owner) or os.environ.get("GITHUB_TOKEN")
+            or os.environ.get("GH_TOKEN"))
 
 def fetch_stars(repo, token):
     """Star dates for repo, oldest first. The cache holds {"hidden": n, "stamps": [...]} (timestamps only)."""
@@ -247,9 +255,12 @@ def main():
     a = ap.parse_args()
     global OUT
     OUT = a.out or OUT
-    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
-    if not a.sample and not token:
-        sys.exit("Set GITHUB_TOKEN (or run with --sample for a preview).")
+    if not a.sample:
+        missing = sorted({r["repo"] for c in CFG["charts"] if not a.only or c["id"] == a.only
+                          for r in c["repos"] if not token_for(r["repo"])})
+        if missing:
+            sys.exit(f"No token for {', '.join(missing)}: set STARS_TOKEN_<OWNER> or GITHUB_TOKEN "
+                     "(or run with --sample for a preview).")
     today = dt.date.today()
     os.makedirs(OUT, exist_ok=True)
     for chart in CFG["charts"]:
@@ -260,7 +271,7 @@ def main():
             if a.sample:
                 dates = sample_stars(dt.date.fromisoformat(r["sample_start"]), today, r["sample_total"], seed=7 + i)
             else:
-                dates = fetch_stars(r["repo"], token)
+                dates = fetch_stars(r["repo"], token_for(r["repo"]))
             if not dates:
                 continue
             series.append({"label": r["label"], "points": cumulative(dates, dates[0], today), "ci": r.get("color", i)})
