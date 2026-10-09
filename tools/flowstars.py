@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """Flow star history chart, in the same M3 Expressive system as the badges and banners.
 
-Data: GitHub REST stargazers endpoint with the `star+json` media type, which includes `starred_at`.
-Since July 2026 GitHub only lists stargazers to a repo's admins and collaborators, so each repo needs a token
-that acts as one. STARS_TOKEN_<OWNER> (owner upper-cased, "-" -> "_", e.g. STARS_TOKEN_FLOW_TUBE) is used for
-that owner's repos, else GITHUB_TOKEN / GH_TOKEN (handy locally: GITHUB_TOKEN=$(gh auth token)).
-The built-in Actions token can't do this.
-Fetched timestamps are cached in data/stars-<owner>-<repo>.json and only new pages are fetched next time.
+Data: GitHub's stargazers history endpoint (/repos/{owner}/{repo}/stargazers/history): stars per day, grouped
+by week, newest first, 30 weeks a page. It needs only read access to public metadata (the built-in Actions token,
+or none at all), returns no usernames, and a whole repo is a page or two, so nothing is cached.
+(The stargazers *list* now needs Contents: write, since GitHub limited it to admins and collaborators in July 2026.)
+GitHub's day boundaries aren't UTC, so a star can land a day apart from its UTC date.
 
 Usage
-  GITHUB_TOKEN=... python3 flowstars.py            # real data, writes v1/stars/*.svg (out/stars outside the brand repo)
+  python3 flowstars.py                              # real data, writes v1/stars/*.svg (out/stars outside the brand repo)
+                                                    # GITHUB_TOKEN is optional; it raises the API rate limit
   python3 flowstars.py --sample                     # preview with a synthetic curve (marked "Sample data")
 """
 import os, sys, json, math, argparse, datetime as dt, urllib.request, urllib.error, random
@@ -27,52 +27,33 @@ DATA = os.path.join(HERE, "data")
 SERIES = {"light": ["#BC0100", "#0059BA"], "dark": ["#F2402C", "#488FFF"]}
 
 # ---------------------------------------------------------------- data
-def _get(url, token, accept="application/vnd.github+json"):
-    req = urllib.request.Request(url, headers={"Accept": accept, "Authorization": f"Bearer {token}",
-                                               "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "flow-brand"})
+def _get(url, token):
+    headers = {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "flow-brand"}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
     try:
-        return json.load(urllib.request.urlopen(req, timeout=30))
+        return json.load(urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30))
     except urllib.error.HTTPError as e:
         sys.exit(f"GET {url} -> {e.code}: {e.read().decode(errors='replace')[:300]}")
 
-def _pages(repo, token, page, stamps):
-    while True:
-        batch = _get(f"https://api.github.com/repos/{repo}/stargazers?per_page=100&page={page}",
-                     token, "application/vnd.github.star+json")
-        if not batch:
-            return stamps
-        stamps += [b["starred_at"] for b in batch]
-        if len(batch) < 100 or page >= 400:       # the API stops at 40k stargazers
-            return stamps
-        page += 1
-
 _fetched = {}
 
-def token_for(repo):
-    owner = repo.split("/")[0].upper().replace("-", "_")
-    return (os.environ.get("STARS_TOKEN_" + owner) or os.environ.get("GITHUB_TOKEN")
-            or os.environ.get("GH_TOKEN"))
-
 def fetch_stars(repo, token):
-    """Star dates for repo, oldest first. The cache holds {"hidden": n, "stamps": [...]} (timestamps only)."""
-    if repo in _fetched:                          # a repo can appear in several charts
-        return _fetched[repo]
-    os.makedirs(DATA, exist_ok=True)
-    cache = os.path.join(DATA, "stars-" + repo.replace("/", "-") + ".json")
-    saved = json.load(open(cache)) if os.path.exists(cache) else {}
-    stamps, hidden = saved.get("stamps", []), saved.get("hidden")
-    page = len(stamps) // 100 + 1
-    stamps = _pages(repo, token, page, stamps[: (page - 1) * 100])   # refetch the last partial page
-    # GitHub's stargazers_count also counts stars the list never returns (e.g. from hidden accounts),
-    # so a steady gap between the two is normal. An unstar shifts every later page and changes that gap;
-    # when it changes, start over (a full fetch is one request per 100 stars).
-    gap = min(_get(f"https://api.github.com/repos/{repo}", token)["stargazers_count"], 40000) - len(stamps)
-    if hidden is not None and gap != hidden:
-        print(f"{repo}: the star count moved by {gap - hidden} against the cache; refetching all pages", flush=True)
-        stamps = _pages(repo, token, 1, [])
-        gap = min(_get(f"https://api.github.com/repos/{repo}", token)["stargazers_count"], 40000) - len(stamps)
-    json.dump({"hidden": gap, "stamps": sorted(stamps)}, open(cache, "w"))
-    _fetched[repo] = sorted(dt.datetime.fromisoformat(t.replace("Z", "+00:00")).date() for t in stamps)
+    """One date per star, oldest first, from the weekly history (fetched once per run, even if several charts use it)."""
+    if repo not in _fetched:
+        weeks, page = [], 1
+        while page <= 100:                        # the API's page limit: 3000 weeks
+            batch = _get(f"https://api.github.com/repos/{repo}/stargazers/history?per_page=30&page={page}", token)
+            weeks += batch
+            if len(batch) < 30:
+                break
+            page += 1
+        dates = []
+        for w in weeks:
+            start = dt.datetime.fromtimestamp(w["week"], dt.timezone.utc).date()
+            for i, n in enumerate(w["days"]):
+                dates += [start + dt.timedelta(days=i)] * n
+        _fetched[repo] = sorted(dates)
     return _fetched[repo]
 
 def sample_stars(start, end, total, seed=7):
@@ -255,12 +236,7 @@ def main():
     a = ap.parse_args()
     global OUT
     OUT = a.out or OUT
-    if not a.sample:
-        missing = sorted({r["repo"] for c in CFG["charts"] if not a.only or c["id"] == a.only
-                          for r in c["repos"] if not token_for(r["repo"])})
-        if missing:
-            sys.exit(f"No token for {', '.join(missing)}: set STARS_TOKEN_<OWNER> or GITHUB_TOKEN "
-                     "(or run with --sample for a preview).")
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     today = dt.date.today()
     os.makedirs(OUT, exist_ok=True)
     for chart in CFG["charts"]:
@@ -271,7 +247,7 @@ def main():
             if a.sample:
                 dates = sample_stars(dt.date.fromisoformat(r["sample_start"]), today, r["sample_total"], seed=7 + i)
             else:
-                dates = fetch_stars(r["repo"], token_for(r["repo"]))
+                dates = fetch_stars(r["repo"], token)
             if not dates:
                 continue
             series.append({"label": r["label"], "points": cumulative(dates, dates[0], today), "ci": r.get("color", i)})

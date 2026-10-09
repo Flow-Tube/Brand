@@ -47,15 +47,8 @@ jobs:
 
       - name: Update star history charts
         env:
-          # GitHub only lists stargazers to a repo's admins and collaborators, so the built-in token can't.
-          # One fine-grained token per owner, each limited to that owner's repo (Metadata: read).
-          STARS_TOKEN_A_EDEV: ${{ secrets.STARS_TOKEN_A_EDEV }}
-          STARS_TOKEN_FLOW_TUBE: ${{ secrets.STARS_TOKEN_FLOW_TUBE }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
-          if [ -z "$STARS_TOKEN_A_EDEV" ] || [ -z "$STARS_TOKEN_FLOW_TUBE" ]; then
-            echo "::warning::STARS_TOKEN_A_EDEV or STARS_TOKEN_FLOW_TUBE is not set; skipping the star history charts"
-            exit 0
-          fi
           python tools/flowstars.py
           python tools/make_manifest.py
 
