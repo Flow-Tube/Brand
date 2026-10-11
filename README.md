@@ -9,13 +9,13 @@ Badges, banners and icon previews for the [Flow](https://github.com/Flow-Tube) p
 **https://assets.flow-tube.org/v1/**. Browse them all, with copy-ready snippets, at **[assets.flow-tube.org](https://assets.flow-tube.org)**.
 
 <p>
-<a href="https://github.com/A-EDev/Flow/releases/latest"><picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/badges/pill/get-github-dark.svg"><img alt="Get it on GitHub" src="https://assets.flow-tube.org/v1/badges/pill/get-github-light.svg" height="60"></picture></a>
+<a href="https://github.com/Flow-Tube/Flow/releases/latest"><picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/badges/pill/get-github-dark.svg"><img alt="Get it on GitHub" src="https://assets.flow-tube.org/v1/badges/pill/get-github-light.svg" height="60"></picture></a>
 <a href="https://github.com/Flow-Tube/Flow-Desktop/releases/latest"><picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/badges/pill/get-linux-dark.svg"><img alt="Download for Linux" src="https://assets.flow-tube.org/v1/badges/pill/get-linux-light.svg" height="60"></picture></a>
 <a href="https://patreon.com/A_EDev"><picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/badges/pill/support-patreon-dark.svg"><img alt="Support Flow on Patreon" src="https://assets.flow-tube.org/v1/badges/pill/support-patreon-light.svg" height="60"></picture></a>
 </p>
 <p>
-<a href="https://github.com/A-EDev/Flow/releases/latest"><picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/badges/split/release-dark.svg"><img alt="Release" src="https://assets.flow-tube.org/v1/badges/split/release-light.svg" height="32"></picture></a>
-<a href="https://github.com/A-EDev/Flow/releases"><picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/badges/split/downloads-dark.svg"><img alt="Downloads" src="https://assets.flow-tube.org/v1/badges/split/downloads-light.svg" height="32"></picture></a>
+<a href="https://github.com/Flow-Tube/Flow/releases/latest"><picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/badges/split/release-dark.svg"><img alt="Release" src="https://assets.flow-tube.org/v1/badges/split/release-light.svg" height="32"></picture></a>
+<a href="https://github.com/Flow-Tube/Flow/releases"><picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/badges/split/downloads-dark.svg"><img alt="Downloads" src="https://assets.flow-tube.org/v1/badges/split/downloads-light.svg" height="32"></picture></a>
 <a href="LICENSE"><picture><source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/badges/split/license-dark.svg"><img alt="License: GPL-3.0" src="https://assets.flow-tube.org/v1/badges/split/license-light.svg" height="32"></picture></a>
 </p>
 
@@ -44,7 +44,7 @@ Use `<picture>` with `prefers-color-scheme`, so readers with a dark theme get th
 **Pill** (60px):
 
 ```html
-<a href="https://github.com/A-EDev/Flow/releases/latest">
+<a href="https://github.com/Flow-Tube/Flow/releases/latest">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/badges/pill/get-github-dark.svg">
     <img alt="Get it on GitHub" src="https://assets.flow-tube.org/v1/badges/pill/get-github-light.svg" height="60">
@@ -55,7 +55,7 @@ Use `<picture>` with `prefers-color-scheme`, so readers with a dark theme get th
 **Info chip** (32px):
 
 ```html
-<a href="https://github.com/A-EDev/Flow/releases/latest">
+<a href="https://github.com/Flow-Tube/Flow/releases/latest">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/badges/split/release-dark.svg">
     <img alt="Release" src="https://assets.flow-tube.org/v1/badges/split/release-light.svg" height="32">
@@ -66,7 +66,7 @@ Use `<picture>` with `prefers-color-scheme`, so readers with a dark theme get th
 **Tile** (152px):
 
 ```html
-<a href="https://github.com/A-EDev/Flow">
+<a href="https://github.com/Flow-Tube/Flow">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/badges/tile/tile-android-dark.svg">
     <img alt="Flow for Android" src="https://assets.flow-tube.org/v1/badges/tile/tile-android-light.svg" width="152">
@@ -86,7 +86,7 @@ Use `<picture>` with `prefers-color-scheme`, so readers with a dark theme get th
 **Star history chart** (full width, links to the stargazers):
 
 ```html
-<a href="https://github.com/A-EDev/Flow/stargazers">
+<a href="https://github.com/Flow-Tube/Flow/stargazers">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://assets.flow-tube.org/v1/stars/stars-flow-android-dark.svg">
     <img alt="Star history of Flow for Android" src="https://assets.flow-tube.org/v1/stars/stars-flow-android-light.svg" width="100%">
@@ -122,7 +122,7 @@ export function FlowBadge({ kind = "pill", id, alt, href, height = 60, theme }) 
   return href ? <a href={href}>{img}</a> : img;
 }
 
-// <FlowBadge id="get-github" alt="Get it on GitHub" href="https://github.com/A-EDev/Flow/releases/latest" />
+// <FlowBadge id="get-github" alt="Get it on GitHub" href="https://github.com/Flow-Tube/Flow/releases/latest" />
 ```
 
 `v1/manifest.json` lists every file with its `alt` text and `href`, if you'd rather build the list from data.
@@ -186,7 +186,7 @@ The same `stats` run rebuilds the charts in `v1/stars/` with [`tools/flowstars.p
 
 ### Refresh right after a Flow release (optional)
 
-Add this step to the end of the release workflow in `A-EDev/Flow`:
+Add this step to the end of the release workflow in `Flow-Tube/Flow`:
 
 ```yaml
       - name: Refresh the brand release chips
@@ -200,7 +200,7 @@ Add this step to the end of the release workflow in `A-EDev/Flow`:
 1. GitHub → Settings → Developer settings → Fine-grained tokens → Generate new token.
 2. Resource owner: **Flow-Tube**. Repository access: **Only select repositories** → `Flow-Tube/Brand`.
 3. Repository permissions: **Contents: Read and write** (needed to send `repository_dispatch`). Metadata: Read-only is added automatically.
-4. In `A-EDev/Flow` → Settings → Secrets and variables → Actions, add it as `BRAND_DISPATCH_TOKEN`.
+4. In `Flow-Tube/Flow` → Settings → Secrets and variables → Actions, add it as `BRAND_DISPATCH_TOKEN`.
 
 The Flow-Tube org must allow fine-grained tokens (org Settings → Personal access tokens). The same step works from `Flow-Tube/Flow-Desktop`.
 

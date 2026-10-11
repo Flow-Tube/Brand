@@ -13,7 +13,7 @@ import json, os, subprocess, sys, urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 CONFIG = os.path.join(HERE, "badges.json")
 REPOS = {  # repo -> (release chip id, downloads chip id)
-    "A-EDev/Flow": ("release", "downloads"),
+    "Flow-Tube/Flow": ("release", "downloads"),
     "Flow-Tube/Flow-Desktop": ("desktop-release", "desktop-downloads"),
 }
 

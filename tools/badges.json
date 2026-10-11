@@ -7,7 +7,7 @@
    "label": "GitHub",
    "category": "download",
    "animated": true,
-   "href": "https://github.com/A-EDev/Flow/releases/latest"
+   "href": "https://github.com/Flow-Tube/Flow/releases/latest"
   },
   {
    "id": "get-izzyondroid",
@@ -25,7 +25,7 @@
    "label": "Obtainium",
    "category": "download",
    "animated": true,
-   "href": "https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/A-EDev/Flow/"
+   "href": "https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/Flow-Tube/Flow/"
   },
   {
    "id": "get-nightly",
@@ -34,7 +34,7 @@
    "label": "Nightly build",
    "category": "nightly",
    "animated": true,
-   "href": "https://nightly.link/A-EDev/Flow/workflows/build/main/flow-nightly-apk.zip"
+   "href": "https://nightly.link/Flow-Tube/Flow/workflows/build/main/flow-nightly-apk.zip"
   },
   {
    "id": "get-windows",
@@ -116,14 +116,14 @@
    "icon": "ms:rocket_launch",
    "key": "Release",
    "value": "v2.2.1",
-   "href": "https://github.com/A-EDev/Flow/releases/latest"
+   "href": "https://github.com/Flow-Tube/Flow/releases/latest"
   },
   {
    "id": "downloads",
    "icon": "ms:download",
    "key": "Downloads",
    "value": "136k+",
-   "href": "https://github.com/A-EDev/Flow/releases"
+   "href": "https://github.com/Flow-Tube/Flow/releases"
   },
   {
    "id": "desktop-release",
@@ -193,7 +193,7 @@
    "sub": "for Android",
    "category": "project",
    "animated": true,
-   "href": "https://github.com/A-EDev/Flow"
+   "href": "https://github.com/Flow-Tube/Flow"
   },
   {
    "id": "tile-desktop",
