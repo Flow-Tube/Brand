@@ -1831,9 +1831,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 2,503 stars as of 2026-10-14",
+   "alt": "Star history: 2,510 stars as of 2026-10-15",
    "href": "https://github.com/Flow-Tube/Flow/stargazers",
-   "bytes": 64104
+   "bytes": 63955
   },
   {
    "path": "stars/stars-flow-android-dark.svg",
@@ -1844,9 +1844,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 2,503 stars as of 2026-10-14",
+   "alt": "Star history: 2,510 stars as of 2026-10-15",
    "href": "https://github.com/Flow-Tube/Flow/stargazers",
-   "bytes": 63647
+   "bytes": 63498
   },
   {
    "path": "stars/stars-flow-android-light-animated.svg",
@@ -1857,9 +1857,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 2,503 stars as of 2026-10-14",
+   "alt": "Star history: 2,510 stars as of 2026-10-15",
    "href": "https://github.com/Flow-Tube/Flow/stargazers",
-   "bytes": 64104
+   "bytes": 63955
   },
   {
    "path": "stars/stars-flow-android-light.svg",
@@ -1870,9 +1870,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 2,503 stars as of 2026-10-14",
+   "alt": "Star history: 2,510 stars as of 2026-10-15",
    "href": "https://github.com/Flow-Tube/Flow/stargazers",
-   "bytes": 63647
+   "bytes": 63498
   },
   {
    "path": "stars/stars-flow-desktop-dark-animated.svg",
@@ -1883,9 +1883,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 105 stars as of 2026-10-14",
+   "alt": "Star history: 104 stars as of 2026-10-15",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
-   "bytes": 74555
+   "bytes": 74559
   },
   {
    "path": "stars/stars-flow-desktop-dark.svg",
@@ -1896,9 +1896,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 105 stars as of 2026-10-14",
+   "alt": "Star history: 104 stars as of 2026-10-15",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
-   "bytes": 74098
+   "bytes": 74102
   },
   {
    "path": "stars/stars-flow-desktop-light-animated.svg",
@@ -1909,9 +1909,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 105 stars as of 2026-10-14",
+   "alt": "Star history: 104 stars as of 2026-10-15",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
-   "bytes": 74555
+   "bytes": 74559
   },
   {
    "path": "stars/stars-flow-desktop-light.svg",
@@ -1922,9 +1922,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 105 stars as of 2026-10-14",
+   "alt": "Star history: 104 stars as of 2026-10-15",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
-   "bytes": 74098
+   "bytes": 74102
   },
   {
    "path": "stars/stars-flow-tube-dark-animated.svg",
@@ -1935,9 +1935,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 2,608 stars as of 2026-10-14",
+   "alt": "Star history: 2,614 stars as of 2026-10-15",
    "href": "https://github.com/Flow-Tube",
-   "bytes": 65070
+   "bytes": 64531
   },
   {
    "path": "stars/stars-flow-tube-dark.svg",
@@ -1948,9 +1948,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 2,608 stars as of 2026-10-14",
+   "alt": "Star history: 2,614 stars as of 2026-10-15",
    "href": "https://github.com/Flow-Tube",
-   "bytes": 64613
+   "bytes": 64074
   },
   {
    "path": "stars/stars-flow-tube-light-animated.svg",
@@ -1961,9 +1961,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 2,608 stars as of 2026-10-14",
+   "alt": "Star history: 2,614 stars as of 2026-10-15",
    "href": "https://github.com/Flow-Tube",
-   "bytes": 65070
+   "bytes": 64531
   },
   {
    "path": "stars/stars-flow-tube-light.svg",
@@ -1974,9 +1974,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 2,608 stars as of 2026-10-14",
+   "alt": "Star history: 2,614 stars as of 2026-10-15",
    "href": "https://github.com/Flow-Tube",
-   "bytes": 64613
+   "bytes": 64074
   }
  ]
 }
