@@ -90,6 +90,34 @@
    "href": "https://patreon.com/A_EDev"
   },
   {
+   "id": "support-opencollective",
+   "icon": "si:opencollective",
+   "overline": "Support Flow on",
+   "label": "Open Collective",
+   "category": "support",
+   "animated": true,
+   "emphasis": "filled",
+   "href": "https://opencollective.com/flow-tube"
+  },
+  {
+   "id": "support-opencollective-tonal",
+   "icon": "si:opencollective",
+   "overline": "Support Flow on",
+   "label": "Open Collective",
+   "category": "support",
+   "animated": true,
+   "href": "https://opencollective.com/flow-tube"
+  },
+  {
+   "id": "support-patreon-tonal",
+   "icon": "ms:favorite",
+   "overline": "Support Flow on",
+   "label": "Patreon",
+   "category": "support",
+   "animated": true,
+   "href": "https://patreon.com/A_EDev"
+  },
+  {
    "id": "part-of-flow",
    "icon": "flow",
    "overline": "Part of the",
@@ -183,6 +211,13 @@
    "key": "Reddit",
    "value": "r/Flow_Official",
    "href": "https://www.reddit.com/r/Flow_Official/"
+  },
+  {
+   "id": "opencollective",
+   "icon": "si:opencollective",
+   "key": "Backers",
+   "value": "Be the first",
+   "href": "https://opencollective.com/flow-tube"
   }
  ],
  "tile": [
@@ -240,9 +275,17 @@
    "id": "tile-support",
    "icon": "ms:favorite",
    "label": "Support",
-   "sub": "Patreon · crypto",
+   "sub": "Open Collective · Patreon",
    "category": "support",
    "href": "https://patreon.com/A_EDev"
+  },
+  {
+   "id": "tile-opencollective",
+   "icon": "si:opencollective",
+   "label": "Open Collective",
+   "sub": "Fund Flow-Tube",
+   "category": "support",
+   "href": "https://opencollective.com/flow-tube"
   }
  ]
 }
