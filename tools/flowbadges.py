@@ -269,8 +269,12 @@ def render_tile(b, theme, animated=False):
         size -= 0.5
     tw = text_width(title, size, wght=720)
     td, _ = text_outline(title, size, (W - tw) / 2, 120, wght=720)
-    sw = text_width(sub, 11.5, wght=500)
-    sd, _ = text_outline(sub, 11.5, (W - sw) / 2, 137, wght=500)
+    # the subtitle sits low, where the rounded corners pull in, so long ones shrink to fit too
+    ssize = 11.5
+    while text_width(sub, ssize, wght=500) > W - 28 and ssize > 9:
+        ssize -= 0.5
+    sw = text_width(sub, ssize, wght=500)
+    sd, _ = text_outline(sub, ssize, (W - sw) / 2, 137, wght=500)
     body += f'<path fill="{P["onSurface"]}" d="{td}"/><path fill="{P["onSurfaceVariant"]}" d="{sd}"/>'
     return wrap(W, H, body, f"{title} {sub}".strip(), css)
 
