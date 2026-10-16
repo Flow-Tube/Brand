@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Refreshes the live numbers on the release and download chips.
+"""Refreshes the live numbers on the release, download and Open Collective backer chips.
 
 For each repo below it reads every release from the GitHub API, then:
   * release   = newest stable tag (prereleases and drafts are skipped)
   * downloads = sum of download_count over all release assets, rounded down: 950, 4.8k+, 48k+, 1.2M+
+  * backers   = backersCount from Open Collective's public JSON: "Be the first", "1 backer", "<n> backers",
+                "1.2k backers" (rounded down). If Open Collective is unreachable the chip keeps its value.
+Balance and income are never shown.
 The values are saved into badges.json (so a full rebuild keeps them) and only those chips are re-rendered.
 
   GITHUB_TOKEN=... python3 update_stats.py
@@ -16,6 +19,7 @@ REPOS = {  # repo -> (release chip id, downloads chip id)
     "Flow-Tube/Flow": ("release", "downloads"),
     "Flow-Tube/Flow-Desktop": ("desktop-release", "desktop-downloads"),
 }
+OPENCOLLECTIVE = ("flow-tube", "opencollective")   # collective slug, backers chip id
 
 def releases(repo):
     out, page = [], 1
@@ -41,6 +45,27 @@ def compact(n):
             return f"{whole}{unit}+"
     return str(n)
 
+def backers_label(n):
+    if n == 0:
+        return "Be the first"
+    if n == 1:
+        return "1 backer"
+    return f"{n} backers" if n < 1000 else compact(n).rstrip("+") + " backers"
+
+def backers(slug):
+    """backersCount from Open Collective, or None (with a warning) if it can't be read. Never raises."""
+    try:
+        req = urllib.request.Request(f"https://opencollective.com/{slug}.json",
+                                     headers={"Accept": "application/json", "User-Agent": "flow-brand-stats"})
+        n = json.load(urllib.request.urlopen(req, timeout=15)).get("backersCount")
+        if isinstance(n, int) and not isinstance(n, bool) and n >= 0:
+            return n
+        problem = f"no usable backersCount ({n!r})"
+    except Exception as e:                        # network, HTTP, timeout, bad JSON: all harmless here
+        problem = f"{type(e).__name__}: {e}"
+    print(f"::warning::Open Collective {slug}: {problem}; keeping the current backers chip", flush=True)
+    return None
+
 def stats(repo):
     rel = releases(repo)
     stable = [r for r in rel if not r["draft"] and not r["prerelease"]]
@@ -58,6 +83,11 @@ def main():
         if latest:
             values[rel_id] = latest
         values[dl_id] = compact(total)
+    slug, chip = OPENCOLLECTIVE
+    n = backers(slug)
+    if n is not None:
+        print(f"Open Collective {slug}: {n} backers -> {backers_label(n)}", flush=True)
+        values[chip] = backers_label(n)
     missing = [i for i in values if i not in chips]
     if missing:
         sys.exit(f"badges.json has no split chip for: {', '.join(missing)}")
