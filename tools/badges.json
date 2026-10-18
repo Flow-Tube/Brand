@@ -143,14 +143,14 @@
    "id": "release",
    "icon": "ms:rocket_launch",
    "key": "Release",
-   "value": "v2.2.1",
+   "value": "v3.0.0",
    "href": "https://github.com/Flow-Tube/Flow/releases/latest"
   },
   {
    "id": "downloads",
    "icon": "ms:download",
    "key": "Downloads",
-   "value": "141k+",
+   "value": "144k+",
    "href": "https://github.com/Flow-Tube/Flow/releases"
   },
   {
