@@ -150,7 +150,7 @@
    "id": "downloads",
    "icon": "ms:download",
    "key": "Downloads",
-   "value": "176k+",
+   "value": "178k+",
    "href": "https://github.com/Flow-Tube/Flow/releases"
   },
   {
@@ -164,7 +164,7 @@
    "id": "desktop-downloads",
    "icon": "ms:download",
    "key": "Downloads",
-   "value": "21k+",
+   "value": "22k+",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/releases"
   },
   {
@@ -216,7 +216,7 @@
    "id": "opencollective",
    "icon": "si:opencollective",
    "key": "Backers",
-   "value": "2 backers",
+   "value": "3 backers",
    "href": "https://opencollective.com/flow-tube"
   }
  ],
