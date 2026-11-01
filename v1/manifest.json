@@ -698,11 +698,11 @@
    "theme": "dark",
    "animated": false,
    "format": "svg",
-   "width": 183,
+   "width": 184,
    "height": 32,
-   "alt": "Downloads: 29k+",
+   "alt": "Downloads: 30k+",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/releases",
-   "bytes": 5078
+   "bytes": 5154
   },
   {
    "path": "badges/split/desktop-downloads-light.svg",
@@ -711,11 +711,11 @@
    "theme": "light",
    "animated": false,
    "format": "svg",
-   "width": 183,
+   "width": 184,
    "height": 32,
-   "alt": "Downloads: 29k+",
+   "alt": "Downloads: 30k+",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/releases",
-   "bytes": 5078
+   "bytes": 5154
   },
   {
    "path": "badges/split/desktop-light.svg",
@@ -763,11 +763,11 @@
    "theme": "dark",
    "animated": false,
    "format": "svg",
-   "width": 190,
+   "width": 192,
    "height": 32,
-   "alt": "Downloads: 198k+",
+   "alt": "Downloads: 202k+",
    "href": "https://github.com/Flow-Tube/Flow/releases",
-   "bytes": 5375
+   "bytes": 5306
   },
   {
    "path": "badges/split/downloads-light.svg",
@@ -776,11 +776,11 @@
    "theme": "light",
    "animated": false,
    "format": "svg",
-   "width": 190,
+   "width": 192,
    "height": 32,
-   "alt": "Downloads: 198k+",
+   "alt": "Downloads: 202k+",
    "href": "https://github.com/Flow-Tube/Flow/releases",
-   "bytes": 5375
+   "bytes": 5306
   },
   {
    "path": "badges/split/flowneuro-dark.svg",
@@ -2039,9 +2039,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,215 stars as of 2026-10-31",
+   "alt": "Star history: 3,231 stars as of 2026-11-01",
    "href": "https://github.com/Flow-Tube/Flow/stargazers",
-   "bytes": 72773
+   "bytes": 72163
   },
   {
    "path": "stars/stars-flow-android-dark.svg",
@@ -2052,9 +2052,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,215 stars as of 2026-10-31",
+   "alt": "Star history: 3,231 stars as of 2026-11-01",
    "href": "https://github.com/Flow-Tube/Flow/stargazers",
-   "bytes": 72316
+   "bytes": 71706
   },
   {
    "path": "stars/stars-flow-android-light-animated.svg",
@@ -2065,9 +2065,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,215 stars as of 2026-10-31",
+   "alt": "Star history: 3,231 stars as of 2026-11-01",
    "href": "https://github.com/Flow-Tube/Flow/stargazers",
-   "bytes": 72773
+   "bytes": 72163
   },
   {
    "path": "stars/stars-flow-android-light.svg",
@@ -2078,9 +2078,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,215 stars as of 2026-10-31",
+   "alt": "Star history: 3,231 stars as of 2026-11-01",
    "href": "https://github.com/Flow-Tube/Flow/stargazers",
-   "bytes": 72316
+   "bytes": 71706
   },
   {
    "path": "stars/stars-flow-desktop-dark-animated.svg",
@@ -2091,9 +2091,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 188 stars as of 2026-10-31",
+   "alt": "Star history: 200 stars as of 2026-11-01",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
-   "bytes": 68556
+   "bytes": 75727
   },
   {
    "path": "stars/stars-flow-desktop-dark.svg",
@@ -2104,9 +2104,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 188 stars as of 2026-10-31",
+   "alt": "Star history: 200 stars as of 2026-11-01",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
-   "bytes": 68099
+   "bytes": 75270
   },
   {
    "path": "stars/stars-flow-desktop-light-animated.svg",
@@ -2117,9 +2117,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 188 stars as of 2026-10-31",
+   "alt": "Star history: 200 stars as of 2026-11-01",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
-   "bytes": 68556
+   "bytes": 75727
   },
   {
    "path": "stars/stars-flow-desktop-light.svg",
@@ -2130,9 +2130,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 188 stars as of 2026-10-31",
+   "alt": "Star history: 200 stars as of 2026-11-01",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
-   "bytes": 68099
+   "bytes": 75270
   },
   {
    "path": "stars/stars-flow-tube-dark-animated.svg",
@@ -2143,9 +2143,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,403 stars as of 2026-10-31",
+   "alt": "Star history: 3,431 stars as of 2026-11-01",
    "href": "https://github.com/Flow-Tube",
-   "bytes": 66668
+   "bytes": 65818
   },
   {
    "path": "stars/stars-flow-tube-dark.svg",
@@ -2156,9 +2156,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,403 stars as of 2026-10-31",
+   "alt": "Star history: 3,431 stars as of 2026-11-01",
    "href": "https://github.com/Flow-Tube",
-   "bytes": 66211
+   "bytes": 65361
   },
   {
    "path": "stars/stars-flow-tube-light-animated.svg",
@@ -2169,9 +2169,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,403 stars as of 2026-10-31",
+   "alt": "Star history: 3,431 stars as of 2026-11-01",
    "href": "https://github.com/Flow-Tube",
-   "bytes": 66668
+   "bytes": 65818
   },
   {
    "path": "stars/stars-flow-tube-light.svg",
@@ -2182,9 +2182,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,403 stars as of 2026-10-31",
+   "alt": "Star history: 3,431 stars as of 2026-11-01",
    "href": "https://github.com/Flow-Tube",
-   "bytes": 66211
+   "bytes": 65361
   }
  ]
 }
