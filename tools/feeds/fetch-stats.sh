@@ -16,6 +16,7 @@ latest_version() {
 
 android="$(gh api "repos/$ANDROID_REPO")"
 desktop="$(gh api "repos/$DESKTOP_REPO")"
+extension="$(gh api "repos/$EXTENSION_REPO")"
 contributors="$(jq '.contributors | length' "$CONTRIBUTORS_FILE")"
 
 downloads="$(gh api "repos/$ANDROID_REPO/releases" --paginate --jq '.[].assets[].download_count' | awk '{s+=$1} END {print s}')"
@@ -28,6 +29,7 @@ extension_version="$(latest_version "$EXTENSION_REPO")"
 jq -n \
   --argjson android "$android" \
   --argjson desktop "$desktop" \
+  --argjson extension "$extension" \
   --argjson contributors "$contributors" \
   --argjson downloads "$downloads" \
   --arg androidVersion "$android_version" \
@@ -47,6 +49,7 @@ jq -n \
     },
     repos: {
       android: { stars: $android.stargazers_count, forks: $android.forks_count },
-      desktop: { stars: $desktop.stargazers_count, forks: $desktop.forks_count }
+      desktop: { stars: $desktop.stargazers_count, forks: $desktop.forks_count },
+      extension: { stars: $extension.stargazers_count, forks: $extension.forks_count }
     }
   }' > "$OUT"

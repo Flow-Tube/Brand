@@ -17,8 +17,8 @@ valid() {
   local filter
   case "$1" in
     stats.json) filter='.stars > 0 and .downloads > 0' ;;
-    changelogs.json) filter='type == "array" and any(.[]; .platform == "android")' ;;
-    downloads.json) filter='.android != null and (.android.assets | length > 0)' ;;
+    changelogs.json) filter='type == "array" and ([.[].platform] | contains(["android", "desktop", "extension"]))' ;;
+    downloads.json) filter='[.android, .desktop, .extension] | all(. != null and (.assets | length > 0))' ;;
     contributors.json) filter='.owner != null and (.contributors | length > 0)' ;;
   esac
   jq -e "$filter" "$2" > /dev/null 2>&1

@@ -211,9 +211,9 @@ The [`pages`](.github/workflows/pages.yml) workflow builds the feeds on every de
 
 | File | What | Shape |
 | --- | --- | --- |
-| `stats.json` | Numbers for Flow for Android, plus latest versions and per-repo counts | `stars`, `forks`, `issues`, `watchers`, `contributors`, `downloads`, `versions.{android,desktop,extension}`, `repos.{android,desktop}.{stars,forks}` |
+| `stats.json` | Numbers for Flow for Android, plus latest versions and per-repo counts | `stars`, `forks`, `issues`, `watchers`, `contributors`, `downloads`, `versions.{android,desktop,extension}`, `repos.{android,desktop,extension}.{stars,forks}` |
 | `changelogs.json` | Release notes for every platform | array of `{content, status, platform, release_url}`; `platform` is `android`, `desktop` or `extension` |
-| `downloads.json` | Latest release and assets per platform, IzzyOnDroid, nightlies | `android`, `desktop`, `extension`, `izzy`, `nightly.android`, `nightly.desktop` (any can be `null` except `android`) |
+| `downloads.json` | Latest release and assets per platform, IzzyOnDroid, nightlies | `android`, `desktop`, `extension`, `izzy`, `nightly.android`, `nightly.desktop` (`izzy` and the nightlies can be `null`) |
 | `contributors.json` | Project owner, repos and merged contributors, without bots | `owner`, `repos[]`, `contributors[]` |
 | `index.json` | Debug info for the last build | `generated_at`, `run_url`, `files.<name>`: `fresh` or `kept` |
 
@@ -221,7 +221,7 @@ The [`pages`](.github/workflows/pages.yml) workflow builds the feeds on every de
 
 **The contract.** Files under `/data/v1/` follow the same promise as `/v1/`: fields can be added, but never renamed or removed. A breaking change goes into `/data/v2/`.
 
-**Failures.** A file counts as `fresh` only if it passes the checks in [`tools/feeds/build.sh`](tools/feeds/build.sh). Otherwise the live copy is published again and marked `kept`. If that fails too the job fails, and GitHub Pages keeps serving the last good deployment.
+**Failures.** A file counts as `fresh` only if it passes the checks in [`tools/feeds/build.sh`](tools/feeds/build.sh), which require all three platforms in `changelogs.json` and `downloads.json`. Otherwise the live copy is published again and marked `kept`. If that fails too the job fails, and GitHub Pages keeps serving the last good deployment.
 
 To build them locally:
 
