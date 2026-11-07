@@ -1,11 +1,16 @@
 name: pages
 
-# Publishes v1/ and the gallery to GitHub Pages (https://assets.flow-tube.org).
+# Publishes v1/, the gallery and the data feeds in data/v1/ to GitHub Pages (https://assets.flow-tube.org).
+# The feeds are built here and never committed, so this runs hourly.
 on:
   push:
     branches: [main]
     paths: ["v1/**", "site/**", ".github/workflows/pages.yml"]
+  schedule:
+    - cron: "23 * * * *"
   workflow_dispatch:
+  repository_dispatch:
+    types: [flow-release]
 
 permissions:
   contents: read
@@ -32,6 +37,11 @@ jobs:
           echo assets.flow-tube.org > _site/CNAME
           touch _site/.nojekyll
           find _site -maxdepth 2 | sort | head -20
+
+      - name: Build data feeds
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash tools/feeds/build.sh _site/data/v1
 
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
