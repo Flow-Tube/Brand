@@ -204,6 +204,31 @@ Add this step to the end of the release workflow in `Flow-Tube/Flow`:
 
 The Flow-Tube org must allow fine-grained tokens (org Settings → Personal access tokens). The same step works from `Flow-Tube/Flow-Desktop`.
 
+## Data feeds
+
+The website's live data is served as JSON from **https://assets.flow-tube.org/data/v1/**, with open CORS and a 10-minute cache.
+The [`pages`](.github/workflows/pages.yml) workflow builds the feeds on every deploy and never commits them: hourly at minute 23, on demand, and when a `flow-release` event arrives.
+
+| File | What | Shape |
+| --- | --- | --- |
+| `stats.json` | Numbers for Flow for Android, plus latest versions and per-repo counts | `stars`, `forks`, `issues`, `watchers`, `contributors`, `downloads`, `versions.{android,desktop,extension}`, `repos.{android,desktop,extension}.{stars,forks}` |
+| `changelogs.json` | Release notes for every platform | array of `{content, status, platform, release_url}`; `platform` is `android`, `desktop` or `extension` |
+| `downloads.json` | Latest release and assets per platform, IzzyOnDroid, nightlies | `android`, `desktop`, `extension`, `izzy`, `nightly.android`, `nightly.desktop` (`izzy` and the nightlies can be `null`) |
+| `contributors.json` | Project owner, repos and merged contributors, without bots | `owner`, `repos[]`, `contributors[]` |
+| `index.json` | Debug info for the last build | `generated_at`, `run_url`, `files.<name>`: `fresh` or `kept` |
+
+`versions` are the latest stable tags without the `v`. `stars`, `forks`, `issues`, `watchers` and `downloads` count `Flow-Tube/Flow` only.
+
+**The contract.** Files under `/data/v1/` follow the same promise as `/v1/`: fields can be added, but never renamed or removed. A breaking change goes into `/data/v2/`.
+
+**Failures.** A file counts as `fresh` only if it passes the checks in [`tools/feeds/build.sh`](tools/feeds/build.sh), which require all three platforms in `changelogs.json` and `downloads.json`. Otherwise the live copy is published again and marked `kept`. If that fails too the job fails, and GitHub Pages keeps serving the last good deployment.
+
+To build them locally:
+
+```sh
+GH_TOKEN="$(gh auth token)" bash tools/feeds/build.sh /tmp/feeds
+```
+
 ## Licensing
 
 - Code in `tools/` and `site/`: [GPL-3.0](LICENSE), same as Flow.
