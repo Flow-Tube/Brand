@@ -698,11 +698,11 @@
    "theme": "dark",
    "animated": false,
    "format": "svg",
-   "width": 184,
+   "width": 181,
    "height": 32,
-   "alt": "Downloads: 48k+",
+   "alt": "Downloads: 51k+",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/releases",
-   "bytes": 5073
+   "bytes": 5010
   },
   {
    "path": "badges/split/desktop-downloads-light.svg",
@@ -711,11 +711,11 @@
    "theme": "light",
    "animated": false,
    "format": "svg",
-   "width": 184,
+   "width": 181,
    "height": 32,
-   "alt": "Downloads: 48k+",
+   "alt": "Downloads: 51k+",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/releases",
-   "bytes": 5073
+   "bytes": 5010
   },
   {
    "path": "badges/split/desktop-light.svg",
@@ -765,9 +765,9 @@
    "format": "svg",
    "width": 191,
    "height": 32,
-   "alt": "Downloads: 234k+",
+   "alt": "Downloads: 239k+",
    "href": "https://github.com/Flow-Tube/Flow/releases",
-   "bytes": 5511
+   "bytes": 5586
   },
   {
    "path": "badges/split/downloads-light.svg",
@@ -778,9 +778,9 @@
    "format": "svg",
    "width": 191,
    "height": 32,
-   "alt": "Downloads: 234k+",
+   "alt": "Downloads: 239k+",
    "href": "https://github.com/Flow-Tube/Flow/releases",
-   "bytes": 5511
+   "bytes": 5586
   },
   {
    "path": "badges/split/flowneuro-dark.svg",
@@ -867,11 +867,11 @@
    "theme": "dark",
    "animated": false,
    "format": "svg",
-   "width": 196,
+   "width": 203,
    "height": 32,
-   "alt": "Backers: 9 backers",
+   "alt": "Backers: 10 backers",
    "href": "https://opencollective.com/flow-tube",
-   "bytes": 5877
+   "bytes": 5984
   },
   {
    "path": "badges/split/opencollective-light.svg",
@@ -880,11 +880,11 @@
    "theme": "light",
    "animated": false,
    "format": "svg",
-   "width": 196,
+   "width": 203,
    "height": 32,
-   "alt": "Backers: 9 backers",
+   "alt": "Backers: 10 backers",
    "href": "https://opencollective.com/flow-tube",
-   "bytes": 5877
+   "bytes": 5984
   },
   {
    "path": "badges/split/reddit-dark.svg",
@@ -2039,9 +2039,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,410 stars as of 2026-11-11",
+   "alt": "Star history: 3,448 stars as of 2026-11-12",
    "href": "https://github.com/Flow-Tube/Flow/stargazers",
-   "bytes": 72220
+   "bytes": 72685
   },
   {
    "path": "stars/stars-flow-android-dark.svg",
@@ -2052,9 +2052,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,410 stars as of 2026-11-11",
+   "alt": "Star history: 3,448 stars as of 2026-11-12",
    "href": "https://github.com/Flow-Tube/Flow/stargazers",
-   "bytes": 71763
+   "bytes": 72228
   },
   {
    "path": "stars/stars-flow-android-light-animated.svg",
@@ -2065,9 +2065,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,410 stars as of 2026-11-11",
+   "alt": "Star history: 3,448 stars as of 2026-11-12",
    "href": "https://github.com/Flow-Tube/Flow/stargazers",
-   "bytes": 72220
+   "bytes": 72685
   },
   {
    "path": "stars/stars-flow-android-light.svg",
@@ -2078,9 +2078,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,410 stars as of 2026-11-11",
+   "alt": "Star history: 3,448 stars as of 2026-11-12",
    "href": "https://github.com/Flow-Tube/Flow/stargazers",
-   "bytes": 71763
+   "bytes": 72228
   },
   {
    "path": "stars/stars-flow-desktop-dark-animated.svg",
@@ -2091,9 +2091,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 244 stars as of 2026-11-11",
+   "alt": "Star history: 250 stars as of 2026-11-12",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
-   "bytes": 74461
+   "bytes": 82367
   },
   {
    "path": "stars/stars-flow-desktop-dark.svg",
@@ -2104,9 +2104,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 244 stars as of 2026-11-11",
+   "alt": "Star history: 250 stars as of 2026-11-12",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
-   "bytes": 74004
+   "bytes": 81910
   },
   {
    "path": "stars/stars-flow-desktop-light-animated.svg",
@@ -2117,9 +2117,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 244 stars as of 2026-11-11",
+   "alt": "Star history: 250 stars as of 2026-11-12",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
-   "bytes": 74461
+   "bytes": 82367
   },
   {
    "path": "stars/stars-flow-desktop-light.svg",
@@ -2130,9 +2130,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 244 stars as of 2026-11-11",
+   "alt": "Star history: 250 stars as of 2026-11-12",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/stargazers",
-   "bytes": 74004
+   "bytes": 81910
   },
   {
    "path": "stars/stars-flow-tube-dark-animated.svg",
@@ -2143,9 +2143,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,654 stars as of 2026-11-11",
+   "alt": "Star history: 3,698 stars as of 2026-11-12",
    "href": "https://github.com/Flow-Tube",
-   "bytes": 66043
+   "bytes": 66696
   },
   {
    "path": "stars/stars-flow-tube-dark.svg",
@@ -2156,9 +2156,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,654 stars as of 2026-11-11",
+   "alt": "Star history: 3,698 stars as of 2026-11-12",
    "href": "https://github.com/Flow-Tube",
-   "bytes": 65586
+   "bytes": 66239
   },
   {
    "path": "stars/stars-flow-tube-light-animated.svg",
@@ -2169,9 +2169,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,654 stars as of 2026-11-11",
+   "alt": "Star history: 3,698 stars as of 2026-11-12",
    "href": "https://github.com/Flow-Tube",
-   "bytes": 66043
+   "bytes": 66696
   },
   {
    "path": "stars/stars-flow-tube-light.svg",
@@ -2182,9 +2182,9 @@
    "format": "svg",
    "width": 960,
    "height": 460,
-   "alt": "Star history: 3,654 stars as of 2026-11-11",
+   "alt": "Star history: 3,698 stars as of 2026-11-12",
    "href": "https://github.com/Flow-Tube",
-   "bytes": 65586
+   "bytes": 66239
   }
  ]
 }
