@@ -143,28 +143,28 @@
    "id": "release",
    "icon": "ms:rocket_launch",
    "key": "Release",
-   "value": "v3.0.0",
+   "value": "v3.0.5",
    "href": "https://github.com/Flow-Tube/Flow/releases/latest"
   },
   {
    "id": "downloads",
    "icon": "ms:download",
    "key": "Downloads",
-   "value": "249k+",
+   "value": "250k+",
    "href": "https://github.com/Flow-Tube/Flow/releases"
   },
   {
    "id": "desktop-release",
    "icon": "ms:rocket_launch",
    "key": "Release",
-   "value": "v0.1.0-beta3",
+   "value": "v0.1.0-beta4",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/releases/latest"
   },
   {
    "id": "desktop-downloads",
    "icon": "ms:download",
    "key": "Downloads",
-   "value": "59k+",
+   "value": "61k+",
    "href": "https://github.com/Flow-Tube/Flow-Desktop/releases"
   },
   {
